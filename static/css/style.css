@@ -3928,3 +3928,10 @@ button[class="program_class_btn"]:disabled {
     right: calc(50% - 100px);
   }
 }
+.upcoming-alert-notice {
+  text-align: center !important;
+  margin-bottom: 120px;
+  padding: 10px;
+  background-color: #edbe33;
+  color: #fff;
+}
