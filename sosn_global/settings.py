@@ -148,6 +148,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# MAILCHIMP_SETTINGS
+MAILCHIMP_API_KEY = '92fd7f4470ed44fc0570598889559bf7-us9'
+MAILCHIMP_REGION = 'us9'
+MAILCHIMP_MARKETING_AUDIENCE_ID = 'c33eb6b3a5'  # new
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

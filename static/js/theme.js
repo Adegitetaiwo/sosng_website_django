@@ -331,13 +331,15 @@
 let resoPopUpCloseBtn = document.getElementById('reso_close_btn')
 let resoPopUpCloseDiv = document.getElementById('reso_close')
 
+if (resoPopUpCloseBtn) {
+    resoPopUpCloseBtn.addEventListener('click', (e) => {
 
-resoPopUpCloseBtn.addEventListener('click', (e) => {
- 
-    resoPopUpCloseDiv.classList.remove('dis-blk')
-    resoPopUpCloseDiv.classList.add('dis-none')
+        resoPopUpCloseDiv.classList.remove('dis-blk')
+        resoPopUpCloseDiv.classList.add('dis-none')
 
-});
+    });
+}
+
 
 
 const accessProgram = (id = NaN, code) => {
@@ -369,7 +371,7 @@ const accessProgram = (id = NaN, code) => {
                 errorCard.classList.remove('in-error-card')
                 errorCard.classList.add('out-error-card')
 
-                // wait for 5s
+                // wait for 2s
                 setTimeout((e) => {
                     errorCard.classList.remove('out-error-card')
                     errorCard.classList.add('in-error-card')
@@ -441,15 +443,57 @@ const accessProgram = (id = NaN, code) => {
 
 };
 
-let programAccessForm = document.getElementById('programAccessForm')
-let programAccessInput = document.getElementById('programAccessInput')
-let programID = document.getElementById('programID')
+let programAccessForm = document.getElementById('programAccessForm');
+let programAccessInput = document.getElementById('programAccessInput');
+let programID = document.getElementById('programID');
 
-programAccessForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    console.log(programID.innerText)
-    accessProgram(id = programID.innerText, code = programAccessInput.value);
+if (programAccessForm) {
+    programAccessForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        console.log(programID.innerText)
+        accessProgram(id = programID.innerText, code = programAccessInput.value);
 
+    });   
+}
+
+let subscribeFormId = document.getElementById("subscribeFormId")
+let subscribeInput = document.getElementById("subscribe_form")
+let subscribeBtn = document.getElementById("subscribe_btn")
+let subMessageDiv = document.getElementById('subMessageDiv')
+
+subscribeFormId.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    $.ajax({
+        type: 'POST',
+        url: `http://127.0.0.1:8000/subscribe/`,
+        data: { email: `${subscribeInput.value}`},
+
+        beforeSend: () => {
+            subscribeBtn.innerHTML = "SUBSCRIBING..."
+
+        },
+        complete: () => {
+            subscribeBtn.innerHTML = "SUBSCRIBE"
+        },
+        success: (data) => {
+            // do something
+            subscribeFormId.reset()
+            subMessageDiv.style.display = 'block';
+            subMessageDiv.classList.add('success');
+            subMessageDiv.innerHTML = 'Successful ✔'
+            setTimeout((e) => {
+                subMessageDiv.style.display = 'none';
+
+            }, 2000);
+            
+        },
+        error: (err) => {
+            // do something
+            subscribeBtn.innerHTML = "ERROR, SUBSCRIBE AGAIN"
+        },
+    });
+    console.log(`It working ${subscribeInput.value}`)
 });
 
 // API Endpont

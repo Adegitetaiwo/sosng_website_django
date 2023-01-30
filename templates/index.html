@@ -273,10 +273,8 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
 					<div class="main_title">
-						<h2>Frequently Asked Questions</h2>
-						<p>Should in case you have any question, please go through the FAQ first,
-							but if your question is not answered here, please feel free to <a href="/contact.html">contact
-								us</a>.
+						<h2>Testimonial</h2>
+						<p>Jesus the same Yesterday, Today and Forever...
 						</p>
 					</div>
 				</div>
@@ -373,25 +371,6 @@
 						</p>
 					</div>
 				</div>
-				<!-- single features -->
-				<div class="col-lg-4 col-md-6">
-					<div class="single_fact faq_card_bg_color">
-						<div class="f_icon">
-							<span class="fa fa-comments"></span>
-						</div>
-						<h4>Do I need any Financial Commitment?</h4>
-						<p>
-							No financial commitment is required towards the ministry. No one from the ministry will require
-							you to pay any sum for
-							any session or to any orphanage home.
-	
-							Participants are only advised to save enough funds personally, that will be sufficient to
-							purchase data for the period
-							of the program as that is extremely important for proper and timely communication between us and
-							you.
-						</p>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -416,11 +395,13 @@
 				<div class="col-lg-4 offset-lg-1">
 					<div class="register_form">
 						<h3>Subscribe Is Free</h3>
-						<form>
+						<form action="" id="subscribeFormId">
 							<div class="row">
 								<div class="col-lg-12 text-center">
-									<input type="email" style="height: 50px; border: 1px solid rgb(233, 233, 233); border-radius: 10px; margin-top: 10px;">
-									<a class="primary-btn btn" href="/program.html">SUBSCRIBE</a>
+									{% csrf_token %}
+									{{ subscribe_form.as_p }}
+									<button class="primary-btn btn" type="submit" id="subscribe_btn">SUBSCRIBE</button>
+									<div id="subMessageDiv"></div>
 								</div>
 							</div>
 						</form>

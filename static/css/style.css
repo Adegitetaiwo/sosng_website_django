@@ -965,7 +965,7 @@ button:focus {
 .fact_area {
   position: relative;
   color: #fff;
-  background-image: url(../img/year_team.png);
+  background-image: url(../img/testimonial-prayer-hand-banner.jpg);
   background-size: contain;
   z-index: 1;
   padding: 120px 0 90px; }
@@ -3934,4 +3934,22 @@ button[class="program_class_btn"]:disabled {
   padding: 10px;
   background-color: #edbe33;
   color: #fff;
+}
+
+#subscribe_form {
+  height: 50px;
+  border: 1px solid rgb(233, 233, 233);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#subscribe_btn {
+  margin-top: 6px !important;
+}
+
+#subMessageDiv {
+  color: #fff;
+  padding: 10px !important;
+  margin-top: 5px;
+  display: none;
 }
